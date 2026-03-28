@@ -8,7 +8,7 @@ Do you feel that although wand of multitudes is great, but it's wand sprite look
 
 #### Features
 1. **Color Palette Accurate**: Uses Rosy-42 color palette built in within aseprite! (https://lospec.com/palette-list/rosy-42)
-2. **Animated**: well.. Animated duh (Wand of swiftness isn't animated, but it is redesigned!)
+2. **Animated**: well.. Animated :P
 
 #### Known Issues
 1. The Wand UI bugs out due to how noita render's it's wand sprites.
