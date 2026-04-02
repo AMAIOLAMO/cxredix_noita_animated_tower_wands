@@ -1,6 +1,8 @@
 dofile_once("data/scripts/lib/coroutines.lua")
 dofile_once("data/scripts/lib/utilities.lua")
+
 local atw_common = dofile_once("mods/cxredix_animated_tower_wands/atw_common.lua")
+
 
 --- ### Adds a component to an entity file.
 --- ***
@@ -11,6 +13,35 @@ function ModEntityFileAddComponent(file_path, comp)
     local contents = file_contents:gsub("</Entity>$", function() return comp .. "</Entity>" end)
     ModTextFileSetContent(file_path, contents)
 end
+
+local wand_comp_append_paths = {
+    ["data/entities/items/wands/wand_good/wand_good_1.xml"] = atw_common.assets_path .. "swiftness/",
+    ["data/entities/items/wands/wand_good/wand_good_2.xml"] = atw_common.assets_path .. "destruction/",
+    ["data/entities/items/wands/wand_good/wand_good_3.xml"] = atw_common.assets_path .. "multitudes/",
+}
+
+local nxml_wand_animation_comp = [[
+    <LuaComponent
+        _enabled="1"
+        _tags="enabled_in_world,enabled_in_hand"
+        execute_every_n_frame="30"
+        script_source_file="mods/cxredix_animated_tower_wands/assets/atw_animated_replace.lua"
+    />
+]]
+
+for wand_xml_path, wand_assets_path in pairs(wand_comp_append_paths) do
+    ModEntityFileAddComponent(wand_xml_path, nxml_wand_animation_comp)
+
+    ModEntityFileAddComponent(wand_xml_path, ([[
+    <LuaComponent
+        _enabled="1"
+        _tags="enabled_in_world,enabled_in_hand"
+        execute_every_n_frame="30"
+        script_source_file="%s/script.lua"
+    />
+    ]]):format(wand_assets_path))
+end
+
 
 ModEntityFileAddComponent(
     "data/entities/items/wands/wand_good/wand_good_3.xml", [[
@@ -76,69 +107,3 @@ ModEntityFileAddComponent(
     />
     ]]
 )
-
-local tower_wand_update_frame = 0
-local TOWER_WAND_UPDATE_FREQ_FRAME = 30
-
-function OnWorldPreUpdate()
-    tower_wand_update_frame = tower_wand_update_frame + 1
-    
-    while tower_wand_update_frame >= TOWER_WAND_UPDATE_FREQ_FRAME do
-        tower_wand_update_frame = tower_wand_update_frame - TOWER_WAND_UPDATE_FREQ_FRAME
-
-        tower_wands_update()
-    end
-end
-
--- replacing static sprites into animated ones
-local TOWER_WAND_IMAGE_FILE_PATH_REPLACE = {
-    ["data/items_gfx/wands/custom/good_01.xml"] = "mods/cxredix_animated_tower_wands/assets/swiftness/animated.xml",
-    ["data/items_gfx/wands/custom/good_02.xml"] = "mods/cxredix_animated_tower_wands/assets/destruction/animated.xml",
-    ["data/items_gfx/wands/custom/good_03.xml"] = "mods/cxredix_animated_tower_wands/assets/multitudes/animated.xml",
-
-}
-
-function tower_wands_update()
-    local wands = EntityGetWithTag("wand")
-
-    if wands ~= nil then
-        local should_emit = ModSettingGet(atw_common.settings_mod_id .. ".multitudes_particles")
-
-        for wand_i, wand_id in ipairs(wands) do
-            
-            -- display emitters
-            local emitters = EntityGetComponent(wand_id, "ParticleEmitterComponent")
-
-            if emitters ~= nil then
-                for emitter_i, emitter_id in ipairs(emitters) do
-                    if ComponentHasTag(emitter_id, "tower_wand_emitter") then
-                        ComponentSetValue(emitter_id, "is_emitting", should_emit and 1 or 0)
-                    end
-                end
-            end
-
-
-            -- change sprite to animated
-            local sprite_comps = EntityGetComponent(wand_id, "SpriteComponent")
-
-            if sprite_comps ~= nil then
-                for sprite_comp_i, sprite_comp_id in ipairs(sprite_comps) do
-                    local img_file_str = ComponentGetValue(sprite_comp_id, "image_file")
-
-                    -- HACK for animated sprites, the default sprites are static for UI purposes.
-                    if TOWER_WAND_IMAGE_FILE_PATH_REPLACE[img_file_str] ~= nil then
-                        ComponentSetValue(
-                            sprite_comp_id, "image_file", TOWER_WAND_IMAGE_FILE_PATH_REPLACE[img_file_str]
-                        )
-                    end
-                end
-            end
-
-
-        end
-    end
-end
-
-
-
-
