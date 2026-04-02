@@ -1,4 +1,9 @@
-<Sprite filename="data/items_gfx/wands/custom/good_03.png">
+<Sprite
+    filename="mods/cxredix_animated_tower_wands/assets/multitudes/spritesheet.png"
+    offset_x="12.5"
+    offset_y="5.5"
+    default_animation="default"
+    >
 	
   <!-- handgun -->
   <RectAnimation 
@@ -10,10 +15,10 @@
 	frame_width="25" 
 	frame_height="11" 
 	has_offset="1"
-	frame_count="1"
+	frame_count="11"
 	frame_wait="0.1" 
-	frames_per_row="10"
-	loop="0"  >
+	frames_per_row="20" 
+	loop="1"  >
   </RectAnimation>
   
 </Sprite>
