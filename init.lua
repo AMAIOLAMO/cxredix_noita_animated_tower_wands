@@ -20,14 +20,14 @@ local wand_comp_append_paths = {
     ["data/entities/items/wands/wand_good/wand_good_3.xml"] = atw_common.assets_path .. "multitudes/",
 }
 
-local nxml_wand_animation_comp = [[
+local nxml_wand_animation_comp = ([[
     <LuaComponent
         _enabled="1"
         _tags="enabled_in_world,enabled_in_hand"
         execute_every_n_frame="30"
-        script_source_file="mods/cxredix_animated_tower_wands/assets/atw_animated_replace.lua"
+        script_source_file="%s"
     />
-]]
+]]):format(atw_common.assets_path .. "atw_animated_replace.lua")
 
 for wand_xml_path, wand_assets_path in pairs(wand_comp_append_paths) do
     ModEntityFileAddComponent(wand_xml_path, nxml_wand_animation_comp)
