@@ -12,7 +12,6 @@ local mod_settings = {
 }
 
 function ModSettingsUpdate( init_scope )
-    GamePrint("Settings update: " .. atw_common.settings_mod_id)
 	mod_settings_update( atw_common.settings_mod_id, mod_settings, init_scope )
 end
 

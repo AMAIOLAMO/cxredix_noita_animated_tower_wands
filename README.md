@@ -10,9 +10,4 @@ Do you feel that although wand of multitudes is great, but it's wand sprite look
 1. **Color Palette Accurate**: Uses Rosy-42 color palette built in within aseprite! (https://lospec.com/palette-list/rosy-42)
 2. **Animated**: well.. Animated :P
 
-#### Known Issues
-1. The Wand UI bugs out due to how noita render's it's wand sprites.
-    - Solution: Pick up the tower wand first, then try to pick up another wand, it should show the stats correctly within the 
-        pickup view.
-
 **All sprites and animation done by me :)**
