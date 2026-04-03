@@ -1,4 +1,4 @@
-<Sprite filename="data/items_gfx/wands/custom/good_03.png">
+<Sprite filename="mods/cxredix_animated_tower_wands/assets/swiftness/static_01.png" >
 	
   <!-- handgun -->
   <RectAnimation 
@@ -6,14 +6,14 @@
 	pos_x="0" 
 	pos_y="0" 
 	offset_x="4" 
-	offset_y="6" 
+	offset_y="5.5" 
 	frame_width="25" 
 	frame_height="11" 
 	has_offset="1"
-	frame_count="1"
-	frame_wait="0.1" 
-	frames_per_row="10"
-	loop="0"  >
+	frame_count="1" 
+	frame_wait="0.15" 
+	frames_per_row="10" 
+	loop="1"  >
   </RectAnimation>
   
 </Sprite>

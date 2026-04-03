@@ -1,17 +1,17 @@
-<Sprite filename="data/items_gfx/wands/custom/good_01.png" >
+<Sprite filename="mods/cxredix_animated_tower_wands/assets/destruction/static_01.png" >
 	
   <!-- handgun -->
   <RectAnimation 
 	name="default" 
-	pos_x="0" 
-	pos_y="0" 
-	offset_x="4" 
-	offset_y="5.5" 
+	pos_x="1" 
+	pos_y="1" 
+	offset_x="3" 
+	offset_y="4" 
 	frame_width="25" 
-	frame_height="11" 
+	frame_height="9" 
 	has_offset="1"
 	frame_count="1" 
-	frame_wait="0.15" 
+	frame_wait="0.08" 
 	frames_per_row="10" 
 	loop="1"  >
   </RectAnimation>
