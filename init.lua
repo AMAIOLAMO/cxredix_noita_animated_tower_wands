@@ -77,25 +77,7 @@ local tower_wands = {
     [TW_ID.multitudes]  = multitudes
 }
 
--- handle static sprite xml setup
-
--- append lua components
-local wand_common_animation_comp = ([[
-    <LuaComponent
-        _enabled="1"
-        _tags="enabled_in_world,enabled_in_hand"
-        execute_every_n_frame="30"
-        script_source_file="%s"
-    />
-]]):format(atw_common.assets_path .. "atw_animated_replace.lua")
-
 for tw_id, tower_wand in pairs(tower_wands) do
-    -- setup static sprite
-    tower_wand:set_static_sprite("static_01.xml")
-
-    -- append animation change
-    tower_wand:append_raw_entity_components(wand_common_animation_comp)
-
     -- append individual script files for each tower wand
     tower_wand:append_raw_entity_components(([[
     <LuaComponent
