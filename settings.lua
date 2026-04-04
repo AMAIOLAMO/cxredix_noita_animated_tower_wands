@@ -1,7 +1,8 @@
 dofile("data/scripts/lib/mod_settings.lua")
-local atw_common = dofile_once("mods/cxredix_animated_tower_wands/atw_common.lua")
+-- cannot load other files yet in this file, They cannot be found.
+-- local atw_common = dofile_once("mods/cxredix_animated_tower_wands/atw_common.lua")
 
-local mod_id = atw_common.settings_mod_id
+local mod_id = "cxredix_animated_tower_wands"
 mod_settings_version = 1
 mod_settings = {
     {
