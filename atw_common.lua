@@ -1,9 +1,15 @@
+dofile_once("data/scripts/lib/utilities.lua")
+
 local M = {
     settings_mod_id = "CxRedix Animated Tower Wands",
     mod_root_path = "mods/cxredix_animated_tower_wands/",
 }
 
 M.assets_path = M.mod_root_path .. "assets/"
+
+function M:get_setting(setting_id)
+    return ModSettingGet(self.settings_mod_id .. "." .. setting_id)
+end
 
 local WandInfo = {}
 WandInfo.__index = WandInfo

@@ -8,7 +8,15 @@ local mod_settings = {
         ui_description = "Enables fancy cosmetic particles on Wand of Multitudes because it deserves it.",
         value_default = true,
         scope = MOD_SETTING_SCOPE_RUNTIME,
-    }
+    },
+
+    {
+        id = "randomize_wand_sprites",
+        ui_name = "Randomize wand sprites",
+        ui_description = "Enables randomization of wand sprites",
+        value_default = false,
+        scope = MOD_SETTING_SCOPE_RUNTIME,
+    },
 }
 
 function ModSettingsUpdate( init_scope )
