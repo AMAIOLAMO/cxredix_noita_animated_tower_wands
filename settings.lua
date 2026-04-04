@@ -1,7 +1,9 @@
 dofile("data/scripts/lib/mod_settings.lua")
 local atw_common = dofile_once("mods/cxredix_animated_tower_wands/atw_common.lua")
 
-local mod_settings = {
+local mod_id = atw_common.settings_mod_id
+mod_settings_version = 1
+mod_settings = {
     {
         id = "multitudes_particles",
         ui_name = "Multitude Particles",
@@ -20,13 +22,13 @@ local mod_settings = {
 }
 
 function ModSettingsUpdate(init_scope)
-	mod_settings_update(atw_common.settings_mod_id, mod_settings, init_scope)
+	mod_settings_update(mod_id, mod_settings, init_scope)
 end
 
 function ModSettingsGuiCount()
-	return mod_settings_gui_count(atw_common.settings_mod_id, mod_settings)
+	return mod_settings_gui_count(mod_id, mod_settings)
 end
 
 function ModSettingsGui(gui, in_main_menu)
-	mod_settings_gui(atw_common.settings_mod_id, mod_settings, gui, in_main_menu)
+	mod_settings_gui(mod_id, mod_settings, gui, in_main_menu)
 end
