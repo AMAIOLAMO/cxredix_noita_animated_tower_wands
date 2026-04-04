@@ -4,12 +4,12 @@ dofile_once("mods/cxredix_animated_tower_wands/atw_wand_utils.lua")
 local atw_common = dofile_once("mods/cxredix_animated_tower_wands/atw_common.lua")
 
 local entity_id = GetUpdatedEntityID()
-local x, y = EntityGetTransform( entity_id )
+
+local wand_info = atw_common.get_wand_info(ATW_ID.destruction)
 
 -- updates the wand sprite
 set_wand_entity_sprites(
     entity_id,
-    (atw_common.assets_path .. "destruction/static_01.xml"),
-    (atw_common.assets_path .. "destruction/animated.xml")
+    wand_info:get_asset("static_01.xml"),
+    wand_info:get_asset("animated.xml")
 )
-

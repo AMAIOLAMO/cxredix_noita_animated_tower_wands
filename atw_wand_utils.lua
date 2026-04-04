@@ -6,21 +6,60 @@ dofile_once("data/scripts/lib/utilities.lua")
 --- @param game_sprite_path string the sprite path for the in game wand sprite that displays within the game (held by entities)
 function set_wand_entity_sprites(entity_id, ui_sprite_path, game_sprite_path)
     -- UI SPRITE COMPONENT --
-    local ability_comp_id = EntityGetFirstComponentIncludingDisabled(entity_id, "AbilityComponent")
-
-    if ability_comp_id ~= nil then
-        ComponentSetValue(
-            ability_comp_id, "sprite_file", ui_sprite_path
-        )
-    end
+    set_wand_entity_ui_sprite_path(entity_id, ui_sprite_path)
 
     -- IN GAME SPRITE COMPONENT --
-    local sprite_comp_id = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
+    set_wand_entity_game_sprite_path(entity_id, game_sprite_path)
+end
 
-    if sprite_comp_id ~= nil then
-        -- HACK for animated sprites, the default sprites are static for UI purposes.
+function set_wand_entity_ui_sprite_path(entity_id, sprite_path)
+    local comp_id = EntityGetFirstComponentIncludingDisabled(entity_id, "AbilityComponent")
+
+    if comp_id ~= nil then
         ComponentSetValue(
-            sprite_comp_id, "image_file", game_sprite_path
+            comp_id, "sprite_file", sprite_path
+        )
+
+        return true
+    end
+
+    return false
+end
+
+function set_wand_entity_game_sprite_path(entity_id, sprite_path)
+    local comp_id = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
+
+    if comp_id ~= nil then
+        ComponentSetValue(
+            comp_id, "image_file", sprite_path
+        )
+
+        return true
+    end
+
+    return false
+end
+
+function get_wand_entity_ui_sprite_path(entity_id)
+    local comp_id = EntityGetFirstComponentIncludingDisabled(entity_id, "AbilityComponent")
+
+    if comp_id ~= nil then
+        return ComponentGetValue(
+            comp_id, "sprite_file"
         )
     end
+
+    return nil
+end
+
+function get_wand_entity_game_sprite_path(entity_id)
+    local comp_id = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
+
+    if comp_id ~= nil then
+        return ComponentGetValue(
+            comp_id, "image_file"
+        )
+    end
+
+    return nil
 end
