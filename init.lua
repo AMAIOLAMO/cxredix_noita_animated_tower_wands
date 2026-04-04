@@ -29,9 +29,6 @@ for atw_id = ATW_ID.BEGIN, ATW_ID.END do
     ]]):format(tower_wand.asset_path .. "script.lua"))
 end
 
--- for tw_id, tower_wand in pairs(atw_common.tower_wands) do
--- end
-
 
 -- MULTITUDES PARTICLE EMITTERS --
 atw_common.get_wand_info(ATW_ID.multitudes):append_raw_entity_components([[

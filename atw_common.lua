@@ -1,7 +1,7 @@
 dofile_once("data/scripts/lib/utilities.lua")
 
 local M = {
-    settings_mod_id = "CxRedix Animated Tower Wands",
+    settings_mod_id = "cxredix_animated_tower_wands",
     mod_root_path = "mods/cxredix_animated_tower_wands/",
 }
 
