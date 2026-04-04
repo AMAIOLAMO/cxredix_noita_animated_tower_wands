@@ -11,5 +11,5 @@ local wand_info = atw_common.get_wand_info(ATW_ID.swiftness)
 set_wand_entity_sprites(
     entity_id,
     wand_info:get_asset("static_01.xml"),
-    wand_info:get_asset("animated.xml")
+    wand_info:get_asset("animated_01.xml")
 )

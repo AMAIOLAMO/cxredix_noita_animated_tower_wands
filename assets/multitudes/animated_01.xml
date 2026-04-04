@@ -1,5 +1,5 @@
 <Sprite
-    filename="mods/cxredix_animated_tower_wands/assets/swiftness/spritesheet.png"
+    filename="mods/cxredix_animated_tower_wands/assets/multitudes/animated_01.png"
     offset_x="12.5"
     offset_y="5.5"
     default_animation="default"
@@ -11,13 +11,13 @@
 	pos_x="0" 
 	pos_y="0" 
 	offset_x="4" 
-	offset_y="5.5" 
+	offset_y="6" 
 	frame_width="25" 
 	frame_height="11" 
 	has_offset="1"
-	frame_count="8" 
-	frame_wait="0.15" 
-	frames_per_row="10" 
+	frame_count="11"
+	frame_wait="0.1" 
+	frames_per_row="20" 
 	loop="1"  >
   </RectAnimation>
   
